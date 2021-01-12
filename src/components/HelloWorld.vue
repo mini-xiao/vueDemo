@@ -8,8 +8,8 @@
       <input type="text" v-model="data.price">
       <label for="">库存数量</label>
       <input type="number" v-model="data.num">
-      <button @click="onAdd()">添加</button>
-      <button @click="onReset()">重置</button>
+      <Button type="success" @click="onAdd()">添加</Button>
+      <Button type="success" @click="onReset()">重置</Button>
     </div>
     
     <div>
