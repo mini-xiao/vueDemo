@@ -3,18 +3,18 @@
     <div>
       <h3>添加商品</h3>
       <label for="">商品名称</label>
-      <input type="text" v-model="data.name">
+      <input type="text" v-model="data.name" />
       <label for="">商品价格</label>
-      <input type="text" v-model="data.price">
+      <input type="text" v-model="data.price" />
       <label for="">库存数量</label>
-      <input type="number" v-model="data.num">
+      <input type="number" v-model="data.num" />
       <Button type="success" @click="onAdd()">添加</Button>
       <Button type="success" @click="onReset()">重置</Button>
     </div>
-    
+
     <div>
       <h3>商品列表</h3>
-      <table  class="todolist-table">
+      <table class="todolist-table">
         <thead>
           <tr>
             <th>商品名称</th>
@@ -25,15 +25,14 @@
         </thead>
 
         <tbody>
-          <tr v-for="(item,index) in list" :key="index">
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
-            <td>{{item.num}}</td>
+          <tr v-for="(item, index) in list" :key="index">
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.num }}</td>
             <td>
-              <button @click="onDelete(item,index)">删除</button>
+              <Button type="error" @click="onDelete(item, index)">删除</Button>
             </td>
           </tr>
-          
         </tbody>
       </table>
     </div>
@@ -42,44 +41,45 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      data:{
-        name:"",
-        price:"",
-        num:""
+      data: {
+        name: "",
+        price: "",
+        num: "",
       },
-      list:[]
-    }
+      list: [],
+    };
   },
 
-  methods:{
-    onAdd(){
-      var data = Object.assign({},this.data);
+  methods: {
+    onAdd() {
+      var data = Object.assign({}, this.data);
       this.list.push(data);
+      this.onReset();
     },
-      onReset(){
+    onReset() {
       this.data.name = "";
       this.data.num = "";
       this.data.price = "";
     },
-    onDelete(item,index){
-      this.list.splice(index,1);
-    }
-  }
-}
+    onDelete(item, index) {
+      this.list.splice(index, 1);
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.todolist-table{
+.todolist-table {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
 .todolist-table th,
-.todolist-table td{
+.todolist-table td {
   padding: 5px;
   border: 1px solid #eee;
 }
