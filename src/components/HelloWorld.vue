@@ -38,7 +38,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: "HelloWorld",
@@ -58,6 +57,25 @@ export default {
       var data = Object.assign({}, this.data);
       this.list.push(data);
       this.onReset();
+      this.$axios
+        .get("/service/product/broadband/findTerminal", {
+          params:{
+            customerCode: "001001407758",
+          }
+        
+        })
+        .then(function (data) {
+          console.log(data);
+        });
+      this.$axios
+        .post("/service/customer/query", {params:{
+          pageNum: "1",
+          pageSize: "15",
+        }})
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {});
     },
     onReset() {
       this.data.name = "";
